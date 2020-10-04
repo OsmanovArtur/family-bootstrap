@@ -1,0 +1,17 @@
+.Container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(138, 147, 149);
+  padding-left: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.Input {
+  width: 600px;
+  margin: 3px;
+}
+.Btn {
+  width: 600px;
+  margin-top: 2px;
+}

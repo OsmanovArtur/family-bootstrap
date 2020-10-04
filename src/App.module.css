@@ -1,0 +1,10 @@
+.Container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  font-family: "Open Sans";
+  overflow: scroll;
+  background-color: #bdb5b5;
+}
