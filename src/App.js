@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import classes from "./App.module.css";
 import FamillyCards from "./Container/FamillyCards/FamillyCards";
-import { Route } from "react-browser-router";
 import PersonPage from "./Container/PersonPage/PersonPage";
 import InputForm from "./Container/InputForm/InputForm";
+import { Redirect, Switch, Route } from "react-router-dom";
 
 class App extends Component {
   state = {
@@ -19,7 +19,6 @@ class App extends Component {
 
   onChangeName = ({ target }) => {
     const name = target.value;
-
     this.setState({
       name,
     });
@@ -27,7 +26,8 @@ class App extends Component {
     this.state.socialNetworks.trim() &&
     this.state.deskription.trim() &&
     this.state.sername.trim() &&
-    this.state.img.trim() !== " "
+    this.state.img.trim() &&
+    name.trim() !== " "
       ? this.setState({ valid: false })
       : this.setState({ valid: true });
   };
@@ -38,8 +38,9 @@ class App extends Component {
     this.state.name.trim() &&
     this.state.socialNetworks.trim() &&
     this.state.deskription.trim() &&
-    sername.trim() &&
-    this.state.img.trim() !== " "
+    this.state.img.trim() &&
+    this.state.img.trim() &&
+    sername.trim() !== " "
       ? this.setState({ valid: false })
       : this.setState({ valid: true });
   };
@@ -95,7 +96,7 @@ class App extends Component {
           deskription: this.state.deskription,
           img: this.state.img,
           socialNetworks: this.state.socialNetworks,
-          id: Math.random() + "",
+          id: Math.random() + " ",
         },
       ];
       const newProfile = [...this.state.newProfile, ...newArr];
@@ -118,34 +119,34 @@ class App extends Component {
 
   render() {
     return (
-      <div className={classes.Container}>
-        <Route
-          path="/"
-          exact
-          render={() => <FamillyCards newProfile={this.state.newProfile} />}
-        />
-        <Route
-          path="/PersonPage/:id"
-          exact
-          render={() => <PersonPage newProfile={this.state.newProfile} />}
-        />
-        <Route
-          path="/InputForm"
-          exact
-          render={() => (
-            <InputForm
-              onChangeName={this.onChangeName}
-              onChangeSername={this.onChangeSername}
-              onChangeImg={this.onChangeImg}
-              onChangeSocialNetworks={this.onChangeSocialNetworks}
-              onChangeDeskription={this.onChangeDeskription}
-              pushNewProfile={this.pushNewProfile}
-              valid={this.state.valid}
-            />
-          )}
-        >
-          {" "}
-        </Route>
+      <div className={classes.Container1}>
+        <Switch>
+          <Route
+            path="/PersonPage/:id"
+            render={() => <PersonPage newProfile={this.state.newProfile} />}
+          />
+
+          <Route
+            path="/InputForm"
+            render={() => (
+              <InputForm
+                onChangeName={this.onChangeName}
+                onChangeSername={this.onChangeSername}
+                onChangeImg={this.onChangeImg}
+                onChangeSocialNetworks={this.onChangeSocialNetworks}
+                onChangeDeskription={this.onChangeDeskription}
+                pushNewProfile={this.pushNewProfile}
+                valid={this.state.valid}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/"
+            render={() => <FamillyCards newProfile={this.state.newProfile} />}
+          />
+          <Redirect to="/" />
+        </Switch>
       </div>
     );
   }

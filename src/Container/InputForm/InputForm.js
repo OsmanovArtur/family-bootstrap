@@ -21,6 +21,7 @@ const InputForm = ({
   return (
     <div className={classes.Container}>
       <h1>Введите нового члена семьи</h1>
+
       <InputGroup className={classes.Input} onChange={onChangeName}>
         <InputGroup.Text id="inputGroup-sizing-default">Имя</InputGroup.Text>
         <FormControl

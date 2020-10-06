@@ -2,7 +2,7 @@ import React from "react";
 import classes from "../PersonPage/PersonPage.module.css";
 import profile from "../../Components/Constant/Constant";
 import { withRouter } from "react-router-dom";
-import { Card } from "react-bootstrap";
+import { Card, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -12,23 +12,31 @@ const PersonPage = ({ newProfile, match }) => {
   let newArr = renderProfile.find((item) => {
     return item.id === match.params.id ? item : false;
   });
-  let renderPerson = [];
-  return (renderPerson = [newArr].map((item, index) => {
-    return (
-      <div key={index}>
-        {item === undefined ? (
-          <div className={classes.Error}>USER NOT FOUND</div>
-        ) : (
-          <Card className={classes.Container} key={index}>
+  return (
+    <div>
+      {newArr === undefined ? (
+        <div className={classes.Alert}>
+          <Alert variant="danger"> USER NOT FOUND</Alert>
+          <Link to="/">
+            <Button variant="primary" size="lg" className={classes.Btn}>
+              Назад
+            </Button>
+          </Link>
+        </div>
+      ) : (
+        <>
+          <Card className={classes.Container}>
             <div className={classes.PersonName}>
-              <a href={item.socialNetworks}>{item.name + " " + item.sername}</a>
+              <a href={newArr.socialNetworks}>
+                {newArr.name + " " + newArr.sername}
+              </a>
             </div>
-            <Card.Img variant="top" src={item.img} className={classes.Img} />
+            <Card.Img variant="top" src={newArr.img} className={classes.Img} />
 
             <Card.Body>
               <Card.Text className={classes.CardText}>
                 {" "}
-                {item.deskription}
+                {newArr.deskription}
               </Card.Text>
             </Card.Body>
             <Link to="/">
@@ -37,10 +45,17 @@ const PersonPage = ({ newProfile, match }) => {
               </Button>
             </Link>
           </Card>
-        )}
-      </div>
-    );
-  }));
+          <Link to="/InputForm" style={{ textDecoration: "none" }}>
+            <div className={classes.BtnArea}>
+              <Button variant="primary" size="md">
+                <h3>Добавить</h3>
+              </Button>
+            </div>
+          </Link>
+        </>
+      )}
+    </div>
+  );
 };
 
 export default withRouter(PersonPage);

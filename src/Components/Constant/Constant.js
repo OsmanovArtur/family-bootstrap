@@ -10,7 +10,7 @@ const profile = {
       img:
         "https://sun9-53.userapi.com/c624029/v624029675/4eea4/qs8ZncGPW54.jpg",
       socialNetworks: "https://vk.com/servinosmanov",
-      alt: "img Servin Osmanov",
+      alt: " Servin Osmanov",
     },
     {
       id: "2",
@@ -22,7 +22,7 @@ const profile = {
       img:
         "https://sun1-90.userapi.com/GA-g5Y058so0_WIHsZoZiIsHEavLeund_hVwng/b8FSJfOAfq4.jpg",
       socialNetworks: "https://vk.com/arturfirst",
-      alt: "img Artur Osmanov",
+      alt: " Artur Osmanov",
     },
     {
       id: "3",
@@ -34,7 +34,7 @@ const profile = {
       img:
         "https://i.mycdn.me/image?id=473864405097&plc=WEB&tkn=*mOgD51UAWjfFOKFdWOBKgtFV9Ns&fn=sqr_288",
       socialNetworks: "https://vk.com/id77018337",
-      alt: "img Aider Osmanov",
+      alt: " Aider Osmanov",
     },
     {
       id: "4",
@@ -46,7 +46,7 @@ const profile = {
       img:
         "https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkEiyn4BtL6izVAaXAybk8X6aKTM5SRkZCeTgDn6uOyic&dpr=2",
       socialNetworks: "https://vk.com/id525428417",
-      alt: "img Lily Osmanova",
+      alt: " Lily Osmanova",
     },
     {
       id: "5",
@@ -58,7 +58,7 @@ const profile = {
       img:
         "https://sun9-55.userapi.com/c824201/v824201902/1625fd/PCtqzNHKDIo.jpg",
       socialNetworks: "https://vk.com/alieva_edie",
-      alt: "img Edie Osmanova",
+      alt: " Edie Osmanova",
     },
     {
       id: "6",
@@ -70,7 +70,7 @@ const profile = {
       img: "https://topspiski.com/wp-content/uploads/2019/11/funtik.jpg",
       socialNetworks:
         "https://www.facebook.com/112184680135678/photos/d41d8cd9/112189923468487/",
-      alt: "img Amir Osmanov",
+      alt: " Amir Osmanov",
     },
   ],
 };
