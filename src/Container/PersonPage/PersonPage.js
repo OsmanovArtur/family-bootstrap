@@ -14,21 +14,12 @@ const PersonPage = ({ newProfile, match }) => {
   });
   return (
     <div>
-      {newArr === undefined ? (
-        <div className={classes.Alert}>
-          <Alert variant="danger"> USER NOT FOUND</Alert>
-          <Link to="/">
-            <Button variant="primary" size="lg" className={classes.Btn}>
-              Назад
-            </Button>
-          </Link>
-        </div>
-      ) : (
+      {newArr ? (
         <>
           <Card className={classes.Container}>
             <div className={classes.PersonName}>
               <a href={newArr.socialNetworks}>
-                {newArr.name + " " + newArr.sername}
+                {`${newArr.name}  ${newArr.sername}`}
               </a>
             </div>
             <Card.Img variant="top" src={newArr.img} className={classes.Img} />
@@ -45,7 +36,7 @@ const PersonPage = ({ newProfile, match }) => {
               </Button>
             </Link>
           </Card>
-          <Link to="/InputForm" style={{ textDecoration: "none" }}>
+          <Link to="/InputForm" className={classes.Link}>
             <div className={classes.BtnArea}>
               <Button variant="primary" size="md">
                 <h3>Добавить</h3>
@@ -53,6 +44,15 @@ const PersonPage = ({ newProfile, match }) => {
             </div>
           </Link>
         </>
+      ) : (
+        <div className={classes.Alert}>
+          <Alert variant="danger"> USER NOT FOUND</Alert>
+          <Link to="/">
+            <Button variant="primary" size="lg" className={classes.Btn}>
+              Назад
+            </Button>
+          </Link>
+        </div>
       )}
     </div>
   );

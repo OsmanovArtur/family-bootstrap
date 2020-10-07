@@ -13,7 +13,7 @@ class App extends Component {
     img: "",
     socialNetworks: "",
     newProfile: [],
-    id: "",
+
     valid: true,
   };
 
@@ -22,92 +22,101 @@ class App extends Component {
     this.setState({
       name,
     });
-    name.trim() &&
-    this.state.socialNetworks.trim() &&
-    this.state.deskription.trim() &&
-    this.state.sername.trim() &&
-    this.state.img.trim() &&
-    name.trim() !== " "
-      ? this.setState({ valid: false })
-      : this.setState({ valid: true });
+    if (
+      name.trim() &&
+      this.state.socialNetworks.trim() &&
+      this.state.deskription.trim() &&
+      this.state.sername.trim() &&
+      this.state.img.trim() !== ""
+    ) {
+      this.setState({ valid: false });
+    } else {
+      this.setState({ valid: true });
+    }
   };
 
   onChangeSername = ({ target }) => {
     const sername = target.value;
     this.setState({ sername });
-    this.state.name.trim() &&
-    this.state.socialNetworks.trim() &&
-    this.state.deskription.trim() &&
-    this.state.img.trim() &&
-    this.state.img.trim() &&
-    sername.trim() !== " "
-      ? this.setState({ valid: false })
-      : this.setState({ valid: true });
+    if (
+      this.state.name.trim() &&
+      this.state.socialNetworks.trim() &&
+      this.state.deskription.trim() &&
+      this.state.img.trim() &&
+      sername.trim() !== ""
+    ) {
+      this.setState({ valid: false });
+    } else {
+      this.setState({ valid: true });
+    }
   };
   onChangeImg = ({ target }) => {
     const img = target.value;
     this.setState({ img });
-    this.state.name.trim() &&
-    this.state.socialNetworks.trim() &&
-    this.state.deskription.trim() &&
-    this.state.sername.trim() &&
-    img.trim() !== " "
-      ? this.setState({ valid: false })
-      : this.setState({ valid: true });
+    if (
+      this.state.name.trim() &&
+      this.state.socialNetworks.trim() &&
+      this.state.deskription.trim() &&
+      this.state.sername.trim() &&
+      img.trim() !== ""
+    ) {
+      this.setState({ valid: false });
+    } else {
+      this.setState({ valid: true });
+    }
   };
 
   onChangeSocialNetworks = ({ target }) => {
     const socialNetworks = target.value;
     this.setState({ socialNetworks });
-    this.state.name.trim() &&
-    socialNetworks.trim() &&
-    this.state.deskription.trim() &&
-    this.state.sername.trim() &&
-    this.state.img.trim() !== " "
-      ? this.setState({ valid: false })
-      : this.setState({ valid: true });
+    if (
+      this.state.name.trim() &&
+      socialNetworks.trim() &&
+      this.state.deskription.trim() &&
+      this.state.sername.trim() &&
+      this.state.img.trim() !== ""
+    ) {
+      this.setState({ valid: false });
+    } else {
+      this.setState({ valid: true });
+    }
   };
   onChangeDeskription = ({ target }) => {
     const deskription = target.value;
     this.setState({
       deskription,
     });
-    this.state.name.trim() &&
-    this.state.socialNetworks.trim() &&
-    deskription.trim() &&
-    this.state.sername.trim() &&
-    this.state.img.trim() !== " "
-      ? this.setState({ valid: false })
-      : this.setState({ valid: true });
-  };
 
-  pushNewProfile = () => {
     if (
       this.state.name.trim() &&
       this.state.socialNetworks.trim() &&
-      this.state.deskription.trim() &&
+      deskription.trim() &&
       this.state.sername.trim() &&
-      this.state.img.trim() !== " "
+      this.state.img.trim() !== ""
     ) {
-      const newArr = [
-        {
-          name: this.state.name,
-          sername: this.state.sername,
-          deskription: this.state.deskription,
-          img: this.state.img,
-          socialNetworks: this.state.socialNetworks,
-          id: Math.random() + " ",
-        },
-      ];
-      const newProfile = [...this.state.newProfile, ...newArr];
-
-      this.setState({
-        newProfile,
-        valid: true,
-      });
+      this.setState({ valid: false });
     } else {
       this.setState({ valid: true });
     }
+  };
+
+  pushNewProfile = () => {
+    const newArr = [
+      {
+        name: this.state.name,
+        sername: this.state.sername,
+        deskription: this.state.deskription,
+        img: this.state.img,
+        socialNetworks: this.state.socialNetworks,
+        id: Math.random() + "",
+      },
+    ];
+    const newProfile = [...this.state.newProfile, ...newArr];
+
+    this.setState({
+      newProfile,
+    });
+
     this.setState({
       name: "",
       sername: "",
@@ -145,7 +154,7 @@ class App extends Component {
             path="/"
             render={() => <FamillyCards newProfile={this.state.newProfile} />}
           />
-          <Redirect to="/" />
+          <Redirect exact to="/" />
         </Switch>
       </div>
     );

@@ -8,42 +8,30 @@ import { Button } from "react-bootstrap";
 const FamillyCards = ({ newProfile }) => {
   const info = profile.info;
   const newArr = [...info, ...newProfile];
-  let renderProfile = [];
+
   return (
     <div>
       <Carousel className={classes.Carousel}>
-        {
-          (renderProfile = newArr.map((item, index) => {
-            return (
-              <Carousel.Item id={index}>
-                <Link
-                  to={`/PersonPage/${item.id}`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <div className={classes.Container}>
-                    <img
-                      src={item.img}
-                      alt=""
-                      style={{
-                        width: "500px",
-                        height: "300px",
-                      }}
-                    />
-                    <div className={classes.Caption}>
-                      <Carousel.Caption>
-                        <h3>{item.name + " " + item.sername}</h3>
+        {newArr.map((item, index) => {
+          return (
+            <Carousel.Item key={index}>
+              <Link to={`/PersonPage/${item.id}`} className={classes.Link}>
+                <div className={classes.Container}>
+                  <img src={item.img} alt={item.alt} className={classes.Img} />
+                  <div className={classes.Caption}>
+                    <Carousel.Caption>
+                      <h3>{item.name + " " + item.sername}</h3>
 
-                        <p>Подробнее</p>
-                      </Carousel.Caption>
-                    </div>
+                      <p>Подробнее</p>
+                    </Carousel.Caption>
                   </div>
-                </Link>
-              </Carousel.Item>
-            );
-          }))
-        }
+                </div>
+              </Link>
+            </Carousel.Item>
+          );
+        })}
       </Carousel>
-      <Link to="/InputForm" style={{ textDecoration: "none" }}>
+      <Link to="/InputForm" className={classes.Link}>
         <div className={classes.BtnArea}>
           <Button variant="primary" size="md">
             <h3>Добавить</h3>
